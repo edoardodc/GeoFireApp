@@ -15,6 +15,10 @@
 		115C6E33235CCF90003FE31F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 115C6E31235CCF90003FE31F /* LaunchScreen.storyboard */; };
 		115C6E3E235CCF90003FE31F /* GeoFireAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115C6E3D235CCF90003FE31F /* GeoFireAppTests.swift */; };
 		115C6E49235CCF90003FE31F /* GeoFireAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115C6E48235CCF90003FE31F /* GeoFireAppUITests.swift */; };
+		11BBEFFC235E55BF006FF991 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11BBEFFB235E55BF006FF991 /* GoogleService-Info.plist */; };
+		46983948D90E1B7523D47FD7 /* Pods_GeoFireApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC7E6CFC1905458189D7AE6 /* Pods_GeoFireApp.framework */; };
+		64F58286139589934248E053 /* Pods_GeoFireAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67A65B38E5F99FBCA1E699E /* Pods_GeoFireAppTests.framework */; };
+		980943B90B49679354E9D8A4 /* Pods_GeoFireAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 672C20AFED898092BABB43C1 /* Pods_GeoFireAppUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,16 @@
 		115C6E44235CCF90003FE31F /* GeoFireAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoFireAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		115C6E48235CCF90003FE31F /* GeoFireAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoFireAppUITests.swift; sourceTree = "<group>"; };
 		115C6E4A235CCF90003FE31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11BBEFFB235E55BF006FF991 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		13E64DBBA3489458860F551F /* Pods-GeoFireAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoFireAppTests.debug.xcconfig"; path = "Target Support Files/Pods-GeoFireAppTests/Pods-GeoFireAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2FC7E6CFC1905458189D7AE6 /* Pods_GeoFireApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoFireApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65C1C21C995DF10075A47F99 /* Pods-GeoFireApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoFireApp.debug.xcconfig"; path = "Target Support Files/Pods-GeoFireApp/Pods-GeoFireApp.debug.xcconfig"; sourceTree = "<group>"; };
+		672C20AFED898092BABB43C1 /* Pods_GeoFireAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoFireAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9925A771C2111E0E283B2D66 /* Pods-GeoFireApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoFireApp.release.xcconfig"; path = "Target Support Files/Pods-GeoFireApp/Pods-GeoFireApp.release.xcconfig"; sourceTree = "<group>"; };
+		A639343C34ECC15ABC33B109 /* Pods-GeoFireAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoFireAppUITests.release.xcconfig"; path = "Target Support Files/Pods-GeoFireAppUITests/Pods-GeoFireAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B7891A1912C4AE3AFB0AF39E /* Pods-GeoFireAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoFireAppTests.release.xcconfig"; path = "Target Support Files/Pods-GeoFireAppTests/Pods-GeoFireAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		F13178B53F719F15AAF7ED03 /* Pods-GeoFireAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoFireAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-GeoFireAppUITests/Pods-GeoFireAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F67A65B38E5F99FBCA1E699E /* Pods_GeoFireAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoFireAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46983948D90E1B7523D47FD7 /* Pods_GeoFireApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F58286139589934248E053 /* Pods_GeoFireAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				980943B90B49679354E9D8A4 /* Pods_GeoFireAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +100,8 @@
 				115C6E3C235CCF90003FE31F /* GeoFireAppTests */,
 				115C6E47235CCF90003FE31F /* GeoFireAppUITests */,
 				115C6E24235CCF89003FE31F /* Products */,
+				3806A8A212FA25F4D27E8165 /* Pods */,
+				A91ECE8C2C56B418A917580E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +121,7 @@
 				115C6E26235CCF89003FE31F /* AppDelegate.swift */,
 				115C6E28235CCF89003FE31F /* SceneDelegate.swift */,
 				115C6E2A235CCF89003FE31F /* ViewController.swift */,
+				11BBEFFB235E55BF006FF991 /* GoogleService-Info.plist */,
 				115C6E2C235CCF89003FE31F /* Main.storyboard */,
 				115C6E2F235CCF90003FE31F /* Assets.xcassets */,
 				115C6E31235CCF90003FE31F /* LaunchScreen.storyboard */,
@@ -128,6 +148,30 @@
 			path = GeoFireAppUITests;
 			sourceTree = "<group>";
 		};
+		3806A8A212FA25F4D27E8165 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				65C1C21C995DF10075A47F99 /* Pods-GeoFireApp.debug.xcconfig */,
+				9925A771C2111E0E283B2D66 /* Pods-GeoFireApp.release.xcconfig */,
+				13E64DBBA3489458860F551F /* Pods-GeoFireAppTests.debug.xcconfig */,
+				B7891A1912C4AE3AFB0AF39E /* Pods-GeoFireAppTests.release.xcconfig */,
+				F13178B53F719F15AAF7ED03 /* Pods-GeoFireAppUITests.debug.xcconfig */,
+				A639343C34ECC15ABC33B109 /* Pods-GeoFireAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A91ECE8C2C56B418A917580E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2FC7E6CFC1905458189D7AE6 /* Pods_GeoFireApp.framework */,
+				F67A65B38E5F99FBCA1E699E /* Pods_GeoFireAppTests.framework */,
+				672C20AFED898092BABB43C1 /* Pods_GeoFireAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +179,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 115C6E4D235CCF90003FE31F /* Build configuration list for PBXNativeTarget "GeoFireApp" */;
 			buildPhases = (
+				53CCE9374C7B3AC0F0DC9E0B /* [CP] Check Pods Manifest.lock */,
 				115C6E1F235CCF89003FE31F /* Sources */,
 				115C6E20235CCF89003FE31F /* Frameworks */,
 				115C6E21235CCF89003FE31F /* Resources */,
+				EA10255993C92DBF2401B2EC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +198,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 115C6E50235CCF90003FE31F /* Build configuration list for PBXNativeTarget "GeoFireAppTests" */;
 			buildPhases = (
+				3C05EFEA2C7FC973EC387A7C /* [CP] Check Pods Manifest.lock */,
 				115C6E35235CCF90003FE31F /* Sources */,
 				115C6E36235CCF90003FE31F /* Frameworks */,
 				115C6E37235CCF90003FE31F /* Resources */,
@@ -170,6 +217,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 115C6E53235CCF90003FE31F /* Build configuration list for PBXNativeTarget "GeoFireAppUITests" */;
 			buildPhases = (
+				488CC2F05CEE75952E540EAB /* [CP] Check Pods Manifest.lock */,
 				115C6E40235CCF90003FE31F /* Sources */,
 				115C6E41235CCF90003FE31F /* Frameworks */,
 				115C6E42235CCF90003FE31F /* Resources */,
@@ -233,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				115C6E33235CCF90003FE31F /* LaunchScreen.storyboard in Resources */,
+				11BBEFFC235E55BF006FF991 /* GoogleService-Info.plist in Resources */,
 				115C6E30235CCF90003FE31F /* Assets.xcassets in Resources */,
 				115C6E2E235CCF89003FE31F /* Main.storyboard in Resources */,
 			);
@@ -253,6 +302,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C05EFEA2C7FC973EC387A7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GeoFireAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		488CC2F05CEE75952E540EAB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GeoFireAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53CCE9374C7B3AC0F0DC9E0B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GeoFireApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA10255993C92DBF2401B2EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GeoFireApp/Pods-GeoFireApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GeoFireApp/Pods-GeoFireApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		115C6E1F235CCF89003FE31F /* Sources */ = {
@@ -432,6 +574,7 @@
 		};
 		115C6E4E235CCF90003FE31F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65C1C21C995DF10075A47F99 /* Pods-GeoFireApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -450,6 +593,7 @@
 		};
 		115C6E4F235CCF90003FE31F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9925A771C2111E0E283B2D66 /* Pods-GeoFireApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -468,6 +612,7 @@
 		};
 		115C6E51235CCF90003FE31F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13E64DBBA3489458860F551F /* Pods-GeoFireAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -490,6 +635,7 @@
 		};
 		115C6E52235CCF90003FE31F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7891A1912C4AE3AFB0AF39E /* Pods-GeoFireAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +658,7 @@
 		};
 		115C6E54235CCF90003FE31F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F13178B53F719F15AAF7ED03 /* Pods-GeoFireAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -532,6 +679,7 @@
 		};
 		115C6E55235CCF90003FE31F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A639343C34ECC15ABC33B109 /* Pods-GeoFireAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

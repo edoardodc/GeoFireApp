@@ -3,16 +3,33 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController {
 
-    
+    let mapView: MKMapView = {
+        let mapView = MKMapView()
+        mapView.showsCompass = true
+        mapView.showsScale = true
+        mapView.showsBuildings = true
+        mapView.showsLargeContentViewer = true
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        return mapView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        addMapView()
     }
 
+    func addMapView() {
+        view.addSubview(mapView)
+        mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+    }
+    
 
 }
 
