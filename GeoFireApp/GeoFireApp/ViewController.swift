@@ -4,8 +4,12 @@
 
 import UIKit
 import MapKit
+import GeoFire
+import CoreLocation
+import FirebaseAuth
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
     let mapView: MKMapView = {
         let mapView = MKMapView()
@@ -17,10 +21,75 @@ class ViewController: UIViewController {
         return mapView
     }()
     
+    let locationManager = CLLocationManager()
+    
+    var authEndResult: AuthDataResult!
+    var fireRef: DatabaseReference!
+    var geoRef: DatabaseReference!
+    var geoFueg: GeoFire!
+    var lastLocation: CLLocation!
+    var id = "Id"
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addMapView()
+        authenticateUser()
+        setupFirebase()
     }
+    
+    func setupFirebase() {
+        fireRef = Database.database().reference()
+        geoRef = Database.database().reference().child("motorists")
+        geoFueg = GeoFire(firebaseRef: geoRef)
+    }
+    
+    func authenticateUser() {
+        Auth.auth().signInAnonymously(completion: { (authResult, error) in
+            if let error = error {
+                print("Anon sign in faild:", error.localizedDescription)
+            } else {
+                self.authEndResult = authResult
+                self.id = self.authEndResult?.user.uid ?? "Zero"
+                print("Signed in with uid:", self.id)
+                self.setLocationManager()
+            }
+            
+        })
+    }
+    
+    func setLocationManager() {
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func getLocation() -> CLLocation {
+        if let newLocation = locationManager.location {
+            lastLocation = newLocation
+            return newLocation
+        } else {
+            return lastLocation
+        }
+    }
+    
+    func setLocation() {
+        let newLocation = getLocation()
+        geoFueg.setLocation(CLLocation(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude), forKey: self.authEndResult.user.uid) { (error) in
+            if (error != nil) {
+                print("An error occured: \(error!)")
+            } else {
+                print("Saved location successfully")
+            }
+        }
+    }
+    
 
     func addMapView() {
         view.addSubview(mapView)
@@ -28,6 +97,25 @@ class ViewController: UIViewController {
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+
+        let userLocation:CLLocation = locations[0] as CLLocation
+
+        print("locations = \(userLocation)")
+        
+        print(id)
+        
+        geoFueg.setLocation(userLocation, forKey: "fountain") { (error) in
+            if (error != nil) {
+                print("An error occured: \(error!)")
+            } else {
+                print("Saved location successfully")
+            }
+        }
+        
     }
     
 
