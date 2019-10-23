@@ -24,11 +24,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     
     var authEndResult: AuthDataResult!
-    var fireRef: DatabaseReference!
+    var fireRef = DatabaseReference()
     var geoRef: DatabaseReference!
     var geoFueg: GeoFire!
     var lastLocation: CLLocation!
-    var id = "Id"
+    var fountainID = "Id"
     
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func setupFirebase() {
         fireRef = Database.database().reference()
-        geoRef = Database.database().reference().child("motorists")
+        geoRef = Database.database().reference().child("motorists").childByAutoId()
         geoFueg = GeoFire(firebaseRef: geoRef)
     }
     
@@ -50,8 +50,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 print("Anon sign in faild:", error.localizedDescription)
             } else {
                 self.authEndResult = authResult
-                self.id = self.authEndResult?.user.uid ?? "Zero"
-                print("Signed in with uid:", self.id)
                 self.setLocationManager()
             }
             
@@ -101,14 +99,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-
+        
         let userLocation:CLLocation = locations[0] as CLLocation
 
         print("locations = \(userLocation)")
+     
+        guard let fountainID = geoRef.key else { return }
         
-        print(id)
-        
-        geoFueg.setLocation(userLocation, forKey: "fountain") { (error) in
+        geoFueg.setLocation(userLocation, forKey: fountainID) { (error) in
             if (error != nil) {
                 print("An error occured: \(error!)")
             } else {
