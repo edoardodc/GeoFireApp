@@ -9,7 +9,7 @@ import CoreLocation
 import FirebaseAuth
 
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     let mapView: MKMapView = {
         let mapView = MKMapView()
@@ -17,6 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         mapView.showsScale = true
         mapView.showsBuildings = true
         mapView.showsLargeContentViewer = true
+        mapView.showsUserLocation = false
         mapView.translatesAutoresizingMaskIntoConstraints = false
         return mapView
     }()
@@ -30,7 +31,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var lastLocation: CLLocation!
     var fountainID = "Id"
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         addMapView()
@@ -40,7 +40,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func setupFirebase() {
         fireRef = Database.database().reference()
-        geoRef = Database.database().reference().child("motorists").childByAutoId()
+        geoRef = Database.database().reference().child("Fountains")
         geoFueg = GeoFire(firebaseRef: geoRef)
     }
     
@@ -52,7 +52,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.authEndResult = authResult
                 self.setLocationManager()
             }
-            
         })
     }
     
@@ -88,8 +87,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func setQuery(center: CLLocation, radius: Double) -> GFQuery {
+        let query = geoFueg.query(at: center, withRadius: radius)
+        return query
+    }
 
     func addMapView() {
+        mapView.delegate = self
         view.addSubview(mapView)
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -98,24 +102,51 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         
         let userLocation:CLLocation = locations[0] as CLLocation
 
         print("locations = \(userLocation)")
-     
-        guard let fountainID = geoRef.key else { return }
         
-        geoFueg.setLocation(userLocation, forKey: fountainID) { (error) in
-            if (error != nil) {
-                print("An error occured: \(error!)")
-            } else {
-                print("Saved location successfully")
-            }
-        }
+        guard let randomID = Database.database().reference().childByAutoId().key else { return }
         
+        let location2D = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        let geoHash = GFGeoHash(location: location2D)
+        print(geoHash)
+        
+//        geoFueg.setLocation(userLocation, forKey: randomID) { (error) in
+//            if (error != nil) {
+//                print("An error occured: \(error!)")
+//            } else {
+//                print("Saved location successfully")
+//            }
+//        }
+    
+    }
+
+    
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+           let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        
+        var radius = mapView.currentRadius()
+        print("radius: ", radius)
+        
+        if radius > 5000 { return }
+        
+        setQuery(center: centerLocation, radius: 1).observe(.keyEntered, with: {(key: String!, location: CLLocation!) in
+            guard let key = key else { return }
+            print("Key: '\(key)' entered the search area and is at location '\(location!)'")
+            self.addPin(location: location)
+            print("Pin ADDED! \(key)")
+            return
+        })
+    }
+    
+    func addPin(location: CLLocation) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        mapView.addAnnotation(annotation)
     }
     
 
 }
-
