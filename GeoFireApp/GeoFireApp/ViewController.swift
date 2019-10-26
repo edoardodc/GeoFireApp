@@ -10,7 +10,7 @@ import FirebaseAuth
 
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-
+    
     let mapView: MKMapView = {
         let mapView = MKMapView()
         mapView.showsCompass = true
@@ -36,7 +36,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         addMapView()
         authenticateUser()
         setupFirebase()
+        addDetailView()
     }
+    
+    func addDetailView() {
+        let detailView = CustomView()
+        view.addSubview(detailView)
+        detailView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+    }
+    
     
     func setupFirebase() {
         fireRef = Database.database().reference()
@@ -133,7 +142,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         if radius > 5000 { return }
         
-        setQuery(center: centerLocation, radius: 1).observe(.keyEntered, with: {(key: String!, location: CLLocation!) in
+        setQuery(center: centerLocation, radius: 2).observe(.keyEntered, with: {(key: String!, location: CLLocation!) in
             guard let key = key else { return }
             print("Key: '\(key)' entered the search area and is at location '\(location!)'")
             self.addPin(location: location)
