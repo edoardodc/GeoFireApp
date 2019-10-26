@@ -22,6 +22,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return mapView
     }()
     
+    var detailView: CustomView?
     let locationManager = CLLocationManager()
     
     var authEndResult: AuthDataResult!
@@ -40,7 +41,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func addDetailView() {
-        let detailView = CustomView()
+        detailView = CustomView()
+        guard let detailView = detailView else { return }
         view.addSubview(detailView)
         detailView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
@@ -112,16 +114,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        let userLocation:CLLocation = locations[0] as CLLocation
-
-        print("locations = \(userLocation)")
+//        let userLocation:CLLocation = locations[0] as CLLocation
+//
+//        let location2D = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         
-        guard let randomID = Database.database().reference().childByAutoId().key else { return }
-        
-        let location2D = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        let geoHash = GFGeoHash(location: location2D)
-        print(geoHash)
-        
+//        guard let randomID = Database.database().reference().childByAutoId().key else { return }
 //        geoFueg.setLocation(userLocation, forKey: randomID) { (error) in
 //            if (error != nil) {
 //                print("An error occured: \(error!)")
@@ -131,10 +128,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 //        }
     
     }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("You tapped an annotation!")
+        guard let latitude = view.annotation?.coordinate.latitude else { return }
+        guard let longitude = view.annotation?.coordinate.longitude else { return}
+        CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: latitude, longitude: longitude)) { (placemarks, error) in
+            guard let placemark = placemarks?[0] as? CLPlacemark else { return }
+            
+            guard let nameLabel = placemark.thoroughfare, let nameCity = placemark.subAdministrativeArea, let nameRegion = placemark.administrativeArea else { return }
+            
+            self.detailView?.setTextLabels(textStreet: nameLabel, textCity: nameCity, textRegion: nameRegion)
+        }
+    }
 
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-           let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         
         var radius = mapView.currentRadius()

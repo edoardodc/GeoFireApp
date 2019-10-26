@@ -9,19 +9,19 @@ class CustomView: UIView {
     
     let labelStreet: UILabel = {
         let label = UILabel()
-        label.text = "A"
+        label.text = "Street name"
         return label
     }()
     
     let labelCity: UILabel = {
         let label = UILabel()
-        label.text = "B"
+        label.text = "City name"
         return label
     }()
     
     let labelRegion: UILabel = {
         let label = UILabel()
-        label.text = "C"
+        label.text = "Region name"
         return label
     }()
     
@@ -47,7 +47,7 @@ class CustomView: UIView {
         layer.cornerRadius = 20
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: 120).isActive = true
-        widthAnchor.constraint(equalToConstant: 200).isActive = true
+        widthAnchor.constraint(equalToConstant: 300).isActive = true
         setupStackView()
     }
     
