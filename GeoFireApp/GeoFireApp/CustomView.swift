@@ -10,18 +10,21 @@ class CustomView: UIView {
     let labelStreet: UILabel = {
         let label = UILabel()
         label.text = "Street name"
+        label.textColor = .black
         return label
     }()
     
     let labelCity: UILabel = {
         let label = UILabel()
         label.text = "City name"
+        label.textColor = .black
         return label
     }()
     
     let labelRegion: UILabel = {
         let label = UILabel()
         label.text = "Region name"
+        label.textColor = .black
         return label
     }()
     
@@ -43,6 +46,7 @@ class CustomView: UIView {
     }
     
     func setupView() {
+        overrideUserInterfaceStyle = .dark
         backgroundColor = .white
         layer.cornerRadius = 20
         translatesAutoresizingMaskIntoConstraints = false

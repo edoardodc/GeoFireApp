@@ -8,7 +8,6 @@ import GeoFire
 import CoreLocation
 import FirebaseAuth
 
-
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     let mapView: MKMapView = {
@@ -24,6 +23,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     var detailView: CustomView?
     let locationManager = CLLocationManager()
+    let clusteringManager = FBClusteringManager()
+    var array: [FBAnnotation] = []
+    var arrayKeys: [String] = []
     
     var authEndResult: AuthDataResult!
     var fireRef = DatabaseReference()
@@ -129,41 +131,96 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     }
     
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        
+            let mapBoundsWidth = Double(self.mapView.bounds.size.width)
+            let mapVisibleRect = self.mapView.visibleMapRect
+            let scale = mapBoundsWidth / mapVisibleRect.size.width
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                guard let strongSelf = self else { return }
+                let annotationArray = strongSelf.clusteringManager.clusteredAnnotations(withinMapRect: mapVisibleRect, zoomScale:scale)
+                DispatchQueue.main.async { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.clusteringManager.display(annotations: annotationArray, onMapView:strongSelf.mapView)
+                }
+            }
+            
+            let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+            
+            var radius = mapView.currentRadius()
+            print("radius: ", radius)
+            
+            if radius > 5000 { return }
+            
+            self.setQuery(center: centerLocation, radius: 2).observe(.keyEntered, with: {(key: String!, location: CLLocation!) in
+                guard let key = key else { return }
+                var addKey = true
+                
+                for element in self.arrayKeys {
+                    if element == key {
+                        addKey = false
+                    }
+                }
+                
+                if addKey {
+                    self.arrayKeys.append(key)
+                    print("Key: '\(key)' entered the search area and is at location '\(location!)'")
+                    self.addPin(location: location)
+                    print("Pin ADDED! \(key)")
+                }
+                
+                return
+            })
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var reuseId = ""
+        if annotation is FBAnnotationCluster {
+            reuseId = "Cluster"
+            var clusterView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+            if clusterView == nil {
+                clusterView = FBAnnotationClusterView(annotation: annotation, reuseIdentifier: reuseId, configuration: FBAnnotationClusterViewConfiguration.default())
+            } else {
+                clusterView?.annotation = annotation
+            }
+            return clusterView
+        } else {
+            reuseId = "Pin"
+            var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+            if pinView == nil {
+                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+                pinView?.pinTintColor = UIColor.green
+            } else {
+                pinView?.annotation = annotation
+            }
+            return pinView
+        }
+    }
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("You tapped an annotation!")
         guard let latitude = view.annotation?.coordinate.latitude else { return }
         guard let longitude = view.annotation?.coordinate.longitude else { return}
         CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: latitude, longitude: longitude)) { (placemarks, error) in
             guard let placemark = placemarks?[0] as? CLPlacemark else { return }
-            
+
             guard let nameLabel = placemark.thoroughfare, let nameCity = placemark.subAdministrativeArea, let nameRegion = placemark.administrativeArea else { return }
             
+            if let annotation = view.annotation as? Fountain {
+                print("Hai toccato una fontana")
+                annotation.nameCity = nameCity
+                annotation.nameRegion = nameRegion
+            }
+            
             self.detailView?.setTextLabels(textStreet: nameLabel, textCity: nameCity, textRegion: nameRegion)
+            
         }
-    }
-
-    
-    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-        
-        var radius = mapView.currentRadius()
-        print("radius: ", radius)
-        
-        if radius > 5000 { return }
-        
-        setQuery(center: centerLocation, radius: 2).observe(.keyEntered, with: {(key: String!, location: CLLocation!) in
-            guard let key = key else { return }
-            print("Key: '\(key)' entered the search area and is at location '\(location!)'")
-            self.addPin(location: location)
-            print("Pin ADDED! \(key)")
-            return
-        })
     }
     
     func addPin(location: CLLocation) {
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        mapView.addAnnotation(annotation)
+        let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let annotation = Fountain(coordinate: coordinate)
+        clusteringManager.add(annotations: [annotation])
     }
     
 

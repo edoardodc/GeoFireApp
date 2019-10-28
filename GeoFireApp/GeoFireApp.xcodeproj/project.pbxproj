@@ -17,6 +17,19 @@
 		115C6E49235CCF90003FE31F /* GeoFireAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115C6E48235CCF90003FE31F /* GeoFireAppUITests.swift */; };
 		11852F5A236256A10028244C /* MKMapViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F59236256A10028244C /* MKMapViewExtension.swift */; };
 		11852F6F2364A22B0028244C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F6E2364A22B0028244C /* CustomView.swift */; };
+		11852F7D2364CC2D0028244C /* FBBoundingBox+MapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F722364CC2C0028244C /* FBBoundingBox+MapKit.swift */; };
+		11852F7E2364CC2D0028244C /* FBQuadTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F732364CC2C0028244C /* FBQuadTreeNode.swift */; };
+		11852F7F2364CC2D0028244C /* FBBoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F742364CC2C0028244C /* FBBoundingBox.swift */; };
+		11852F802364CC2D0028244C /* FBAnnotationClusterViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F752364CC2C0028244C /* FBAnnotationClusterViewConfiguration.swift */; };
+		11852F812364CC2D0028244C /* FBClusteringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F762364CC2D0028244C /* FBClusteringManager.swift */; };
+		11852F822364CC2D0028244C /* FBQuadTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F772364CC2D0028244C /* FBQuadTree.swift */; };
+		11852F832364CC2D0028244C /* FBAnnotationClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F782364CC2D0028244C /* FBAnnotationClusterView.swift */; };
+		11852F842364CC2D0028244C /* FBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F792364CC2D0028244C /* FBAnnotation.swift */; };
+		11852F852364CC2D0028244C /* FBZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F7A2364CC2D0028244C /* FBZoomLevel.swift */; };
+		11852F862364CC2D0028244C /* FBAnnotationCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F7B2364CC2D0028244C /* FBAnnotationCluster.swift */; };
+		11852F872364CC2D0028244C /* FBAnnotationClusterTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F7C2364CC2D0028244C /* FBAnnotationClusterTemplate.swift */; };
+		11852F892364CD8B0028244C /* ViewController+ MKMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F882364CD8B0028244C /* ViewController+ MKMapViewDelegate.swift */; };
+		11852F8D236730740028244C /* Fountain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11852F8C236730740028244C /* Fountain.swift */; };
 		11BBEFFC235E55BF006FF991 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11BBEFFB235E55BF006FF991 /* GoogleService-Info.plist */; };
 		46983948D90E1B7523D47FD7 /* Pods_GeoFireApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC7E6CFC1905458189D7AE6 /* Pods_GeoFireApp.framework */; };
 		64F58286139589934248E053 /* Pods_GeoFireAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67A65B38E5F99FBCA1E699E /* Pods_GeoFireAppTests.framework */; };
@@ -57,6 +70,19 @@
 		115C6E4A235CCF90003FE31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11852F59236256A10028244C /* MKMapViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewExtension.swift; sourceTree = "<group>"; };
 		11852F6E2364A22B0028244C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		11852F722364CC2C0028244C /* FBBoundingBox+MapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FBBoundingBox+MapKit.swift"; sourceTree = "<group>"; };
+		11852F732364CC2C0028244C /* FBQuadTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBQuadTreeNode.swift; sourceTree = "<group>"; };
+		11852F742364CC2C0028244C /* FBBoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBBoundingBox.swift; sourceTree = "<group>"; };
+		11852F752364CC2C0028244C /* FBAnnotationClusterViewConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotationClusterViewConfiguration.swift; sourceTree = "<group>"; };
+		11852F762364CC2D0028244C /* FBClusteringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBClusteringManager.swift; sourceTree = "<group>"; };
+		11852F772364CC2D0028244C /* FBQuadTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBQuadTree.swift; sourceTree = "<group>"; };
+		11852F782364CC2D0028244C /* FBAnnotationClusterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotationClusterView.swift; sourceTree = "<group>"; };
+		11852F792364CC2D0028244C /* FBAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotation.swift; sourceTree = "<group>"; };
+		11852F7A2364CC2D0028244C /* FBZoomLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBZoomLevel.swift; sourceTree = "<group>"; };
+		11852F7B2364CC2D0028244C /* FBAnnotationCluster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotationCluster.swift; sourceTree = "<group>"; };
+		11852F7C2364CC2D0028244C /* FBAnnotationClusterTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotationClusterTemplate.swift; sourceTree = "<group>"; };
+		11852F882364CD8B0028244C /* ViewController+ MKMapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ MKMapViewDelegate.swift"; sourceTree = "<group>"; };
+		11852F8C236730740028244C /* Fountain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fountain.swift; sourceTree = "<group>"; };
 		11BBEFFB235E55BF006FF991 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13E64DBBA3489458860F551F /* Pods-GeoFireAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoFireAppTests.debug.xcconfig"; path = "Target Support Files/Pods-GeoFireAppTests/Pods-GeoFireAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2FC7E6CFC1905458189D7AE6 /* Pods_GeoFireApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoFireApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,12 +151,15 @@
 				115C6E26235CCF89003FE31F /* AppDelegate.swift */,
 				115C6E28235CCF89003FE31F /* SceneDelegate.swift */,
 				115C6E2A235CCF89003FE31F /* ViewController.swift */,
+				11852F882364CD8B0028244C /* ViewController+ MKMapViewDelegate.swift */,
 				11852F59236256A10028244C /* MKMapViewExtension.swift */,
 				11852F6E2364A22B0028244C /* CustomView.swift */,
+				11852F8C236730740028244C /* Fountain.swift */,
 				11BBEFFB235E55BF006FF991 /* GoogleService-Info.plist */,
 				115C6E2C235CCF89003FE31F /* Main.storyboard */,
 				115C6E2F235CCF90003FE31F /* Assets.xcassets */,
 				115C6E31235CCF90003FE31F /* LaunchScreen.storyboard */,
+				11852F712364CACF0028244C /* FBAnnotation */,
 				115C6E34235CCF90003FE31F /* Info.plist */,
 			);
 			path = GeoFireApp;
@@ -152,6 +181,24 @@
 				115C6E4A235CCF90003FE31F /* Info.plist */,
 			);
 			path = GeoFireAppUITests;
+			sourceTree = "<group>";
+		};
+		11852F712364CACF0028244C /* FBAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				11852F792364CC2D0028244C /* FBAnnotation.swift */,
+				11852F7B2364CC2D0028244C /* FBAnnotationCluster.swift */,
+				11852F7C2364CC2D0028244C /* FBAnnotationClusterTemplate.swift */,
+				11852F782364CC2D0028244C /* FBAnnotationClusterView.swift */,
+				11852F752364CC2C0028244C /* FBAnnotationClusterViewConfiguration.swift */,
+				11852F742364CC2C0028244C /* FBBoundingBox.swift */,
+				11852F722364CC2C0028244C /* FBBoundingBox+MapKit.swift */,
+				11852F762364CC2D0028244C /* FBClusteringManager.swift */,
+				11852F772364CC2D0028244C /* FBQuadTree.swift */,
+				11852F732364CC2C0028244C /* FBQuadTreeNode.swift */,
+				11852F7A2364CC2D0028244C /* FBZoomLevel.swift */,
+			);
+			path = FBAnnotation;
 			sourceTree = "<group>";
 		};
 		3806A8A212FA25F4D27E8165 /* Pods */ = {
@@ -410,11 +457,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11852F842364CC2D0028244C /* FBAnnotation.swift in Sources */,
+				11852F852364CC2D0028244C /* FBZoomLevel.swift in Sources */,
 				11852F6F2364A22B0028244C /* CustomView.swift in Sources */,
+				11852F8D236730740028244C /* Fountain.swift in Sources */,
+				11852F802364CC2D0028244C /* FBAnnotationClusterViewConfiguration.swift in Sources */,
 				115C6E2B235CCF89003FE31F /* ViewController.swift in Sources */,
 				11852F5A236256A10028244C /* MKMapViewExtension.swift in Sources */,
+				11852F832364CC2D0028244C /* FBAnnotationClusterView.swift in Sources */,
+				11852F872364CC2D0028244C /* FBAnnotationClusterTemplate.swift in Sources */,
+				11852F892364CD8B0028244C /* ViewController+ MKMapViewDelegate.swift in Sources */,
 				115C6E27235CCF89003FE31F /* AppDelegate.swift in Sources */,
+				11852F812364CC2D0028244C /* FBClusteringManager.swift in Sources */,
+				11852F862364CC2D0028244C /* FBAnnotationCluster.swift in Sources */,
+				11852F7E2364CC2D0028244C /* FBQuadTreeNode.swift in Sources */,
+				11852F7F2364CC2D0028244C /* FBBoundingBox.swift in Sources */,
 				115C6E29235CCF89003FE31F /* SceneDelegate.swift in Sources */,
+				11852F7D2364CC2D0028244C /* FBBoundingBox+MapKit.swift in Sources */,
+				11852F822364CC2D0028244C /* FBQuadTree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
