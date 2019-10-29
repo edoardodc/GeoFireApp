@@ -28,9 +28,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var arrayKeys: [String] = []
     
     var authEndResult: AuthDataResult!
-    var fireRef = DatabaseReference()
-    var geoRef: DatabaseReference!
-    var geoFueg: GeoFire!
+    var geoRef = DatabaseReference()
     var lastLocation: CLLocation!
     var fountainID = "Id"
     
@@ -52,9 +50,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     
     func setupFirebase() {
-        fireRef = Database.database().reference()
         geoRef = Database.database().reference().child("Fountains")
-        geoFueg = GeoFire(firebaseRef: geoRef)
     }
     
     func authenticateUser() {
@@ -91,7 +87,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func setLocation() {
         let newLocation = getLocation()
-        geoFueg.setLocation(CLLocation(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude), forKey: self.authEndResult.user.uid) { (error) in
+        GeoFire(firebaseRef: geoRef).setLocation(CLLocation(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude), forKey: self.authEndResult.user.uid) { (error) in
             if (error != nil) {
                 print("An error occured: \(error!)")
             } else {
@@ -101,7 +97,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func setQuery(center: CLLocation, radius: Double) -> GFQuery {
-        let query = geoFueg.query(at: center, withRadius: radius)
+        let query =  GeoFire(firebaseRef: geoRef).query(at: center, withRadius: radius)
         return query
     }
 
