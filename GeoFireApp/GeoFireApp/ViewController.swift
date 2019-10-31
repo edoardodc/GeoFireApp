@@ -200,6 +200,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: latitude, longitude: longitude)) { (placemarks, error) in
             guard let placemark = placemarks?[0] as? CLPlacemark else { return }
 
+            print(placemark.subLocality)
+
             guard let nameLabel = placemark.thoroughfare, let nameCity = placemark.subAdministrativeArea, let nameRegion = placemark.administrativeArea else { return }
             
             if let annotation = view.annotation as? Fountain {
