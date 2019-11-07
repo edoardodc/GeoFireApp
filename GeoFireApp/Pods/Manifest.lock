@@ -80,6 +80,7 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
   - leveldb-library (1.22)
+  - LMGeocoderSwift (1.0.1)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -90,6 +91,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
+  - LMGeocoderSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -108,6 +110,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - leveldb-library
+    - LMGeocoderSwift
     - nanopb
 
 EXTERNAL SOURCES:
@@ -136,8 +139,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  LMGeocoderSwift: eeeaee3ca88975a88df1092d94f656216f6767ee
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
 
-PODFILE CHECKSUM: d0884857b477ffac89cc65856183671418d411be
+PODFILE CHECKSUM: b2e8b40575ac6e634726ea72b0cc70a757385c09
 
 COCOAPODS: 1.6.1

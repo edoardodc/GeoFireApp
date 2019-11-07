@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AB577DF0D09AAFCE8ED8F0B6163E14C2"
-               BuildableName = "Pods-GeoFireAppUITests.framework"
-               BlueprintName = "Pods-GeoFireAppUITests"
+               BlueprintIdentifier = "BF31A440AC9F7C31A9E041E19839EC57"
+               BuildableName = "LMGeocoderSwift.framework"
+               BlueprintName = "LMGeocoderSwift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
