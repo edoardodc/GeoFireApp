@@ -86,12 +86,14 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - SwiftLocation (4.1.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
   - LMGeocoderSwift
+  - SwiftLocation (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -112,6 +114,7 @@ SPEC REPOS:
     - leveldb-library
     - LMGeocoderSwift
     - nanopb
+    - SwiftLocation
 
 EXTERNAL SOURCES:
   GeoFire:
@@ -141,7 +144,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   LMGeocoderSwift: eeeaee3ca88975a88df1092d94f656216f6767ee
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  SwiftLocation: e89dd4dbebbce1755836154103546f4ab3d92aae
 
-PODFILE CHECKSUM: b2e8b40575ac6e634726ea72b0cc70a757385c09
+PODFILE CHECKSUM: c24a026f550fec5ddf653f6f94fdbf9b6ab42a8a
 
 COCOAPODS: 1.6.1

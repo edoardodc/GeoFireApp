@@ -7,6 +7,7 @@ import MapKit
 import GeoFire
 import CoreLocation
 import FirebaseAuth
+import SwiftLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -112,6 +113,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        LocationManager.shared.locateFromGPS(.continous, accuracy: .city) { result in
+        switch result {
+          case .failure(let error):
+            debugPrint("Received error: \(error)")
+          case .success(let location):
+            debugPrint("Location received: \(location)")
+        }
+        
 //        let userLocation:CLLocation = locations[0] as CLLocation
 //
 //        let location2D = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
@@ -160,10 +169,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 
                 if addKey {
                     self.arrayKeys.append(key)
-                    print("Key: '\(key)' entered the search area and is at location '\(location!)'")
-                    self.addPin(location: location)
                     print("Pin ADDED! \(key)")
+                    
+                    let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                    
+
+                    
+                    
                 }
+                
+                
+                
                 
                 return
             })

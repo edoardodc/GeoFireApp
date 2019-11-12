@@ -9,8 +9,11 @@ target 'GeoFireApp' do
   pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'  
   pod 'Firebase/Auth'
   pod 'LMGeocoderSwift'
-  # Pods for GeoFireApp
+  pod 'SwiftLocation', '~> 4.0'
 
+
+  # Pods for GeoFireApp
+	
   target 'GeoFireAppTests' do
     inherit! :search_paths
     # Pods for testing
