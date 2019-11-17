@@ -7,7 +7,7 @@ import MapKit
 import GeoFire
 import CoreLocation
 import FirebaseAuth
-import SwiftLocation
+import Nominatim
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -113,14 +113,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        LocationManager.shared.locateFromGPS(.continous, accuracy: .city) { result in
-        switch result {
-          case .failure(let error):
-            debugPrint("Received error: \(error)")
-          case .success(let location):
-            debugPrint("Location received: \(location)")
-        }
-        
 //        let userLocation:CLLocation = locations[0] as CLLocation
 //
 //        let location2D = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
@@ -155,12 +147,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             var radius = mapView.currentRadius()
             print("radius: ", radius)
             
+            print(centerLocation)
+            Nominatim.getLocation(fromLatitude: String(centerLocation.coordinate.latitude), longitude:  String(centerLocation.coordinate.longitude), completion: {(error, location) -> Void in
+                    print(location?.cityDistrict)
+            })
+        
             if radius > 5000 { return }
             
             self.setQuery(center: centerLocation, radius: 2).observe(.keyEntered, with: {(key: String!, location: CLLocation!) in
                 guard let key = key else { return }
                 var addKey = true
-                
+                                 
                 for element in self.arrayKeys {
                     if element == key {
                         addKey = false
@@ -170,16 +167,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 if addKey {
                     self.arrayKeys.append(key)
                     print("Pin ADDED! \(key)")
-                    
-                    let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-                    
-
-                    
-                    
+        
                 }
-                
-                
-                
                 
                 return
             })

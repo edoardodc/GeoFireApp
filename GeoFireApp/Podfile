@@ -10,7 +10,7 @@ target 'GeoFireApp' do
   pod 'Firebase/Auth'
   pod 'LMGeocoderSwift'
   pod 'SwiftLocation', '~> 4.0'
-
+  pod 'Nominatim'
 
   # Pods for GeoFireApp
 	

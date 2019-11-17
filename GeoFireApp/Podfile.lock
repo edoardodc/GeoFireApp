@@ -86,6 +86,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Nominatim (0.9.2)
   - SwiftLocation (4.1.0)
 
 DEPENDENCIES:
@@ -93,6 +94,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
   - LMGeocoderSwift
+  - Nominatim
   - SwiftLocation (~> 4.0)
 
 SPEC REPOS:
@@ -114,6 +116,7 @@ SPEC REPOS:
     - leveldb-library
     - LMGeocoderSwift
     - nanopb
+    - Nominatim
     - SwiftLocation
 
 EXTERNAL SOURCES:
@@ -144,8 +147,9 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   LMGeocoderSwift: eeeaee3ca88975a88df1092d94f656216f6767ee
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Nominatim: 2083a9f3073c4f738c1e6669e3f3381494072cb7
   SwiftLocation: e89dd4dbebbce1755836154103546f4ab3d92aae
 
-PODFILE CHECKSUM: c24a026f550fec5ddf653f6f94fdbf9b6ab42a8a
+PODFILE CHECKSUM: a587717f341d699fe40484429cd85c7989ca2dc7
 
 COCOAPODS: 1.6.1
