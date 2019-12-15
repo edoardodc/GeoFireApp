@@ -7,7 +7,6 @@ import MapKit
 import GeoFire
 import CoreLocation
 import FirebaseAuth
-import Nominatim
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -17,9 +16,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.showsScale = true
         mapView.showsBuildings = true
         mapView.showsLargeContentViewer = true
-        mapView.showsUserLocation = false
+        mapView.showsUserLocation = true
         mapView.translatesAutoresizingMaskIntoConstraints = false
         return mapView
+    }()
+    
+    let buttonLocation: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Tap me!", for: .normal)
+        button.backgroundColor = .red
+        return button
     }()
     
     var detailView: CustomView?
@@ -39,6 +46,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         authenticateUser()
         setupFirebase()
         addDetailView()
+        addButtonLocation()
+        locationManager.startUpdatingLocation()
+    }
+    
+    func addButtonLocation() {
+        buttonLocation.addTarget(self, action: #selector(buttonStopUpdateLocationTapped), for: .touchUpInside)
+        view.addSubview(buttonLocation)
+        buttonLocation.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        buttonLocation.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     func addDetailView() {
@@ -47,6 +63,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         view.addSubview(detailView)
         detailView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+    }
+    
+    @objc private func buttonStopUpdateLocationTapped() {
+        locationManager.stopUpdatingLocation()
+        print("ButtonTapped")
     }
     
     
@@ -88,7 +109,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func setLocation() {
         let newLocation = getLocation()
-        GeoFire(firebaseRef: geoRef).setLocation(CLLocation(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude), forKey: self.authEndResult.user.uid) { (error) in
+        let firebaseReference = Database.database().reference().child("Reports").child("Users").child(self.authEndResult.user.uid)
+        let geoRefUsers = GeoFire(firebaseRef: firebaseReference)
+        let randomID = UUID().uuidString
+        geoRefUsers.setLocation(CLLocation(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude), forKey: randomID) { (error) in
             if (error != nil) {
                 print("An error occured: \(error!)")
             } else {
@@ -112,20 +136,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-//        let userLocation:CLLocation = locations[0] as CLLocation
-//
-//        let location2D = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        
-//        guard let randomID = Database.database().reference().childByAutoId().key else { return }
-//        geoFueg.setLocation(userLocation, forKey: randomID) { (error) in
-//            if (error != nil) {
-//                print("An error occured: \(error!)")
-//            } else {
-//                print("Saved location successfully")
-//            }
-//        }
-    
+        setLocation()
+        print("A")
     }
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
@@ -148,9 +160,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             print("radius: ", radius)
             
             print(centerLocation)
-            Nominatim.getLocation(fromLatitude: String(centerLocation.coordinate.latitude), longitude:  String(centerLocation.coordinate.longitude), completion: {(error, location) -> Void in
-                    print(location?.cityDistrict)
-            })
         
             if radius > 5000 { return }
             
@@ -167,7 +176,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 if addKey {
                     self.arrayKeys.append(key)
                     print("Pin ADDED! \(key)")
-        
+                    self.addPin(location: location)
                 }
                 
                 return
