@@ -21,14 +21,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return mapView
     }()
     
-    let buttonLocation: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Tap me!", for: .normal)
-        button.backgroundColor = .red
-        return button
-    }()
-    
     var detailView: CustomView?
     let locationManager = CLLocationManager()
     let clusteringManager = FBClusteringManager()
@@ -46,15 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         authenticateUser()
         setupFirebase()
         addDetailView()
-        addButtonLocation()
         locationManager.startUpdatingLocation()
-    }
-    
-    func addButtonLocation() {
-        buttonLocation.addTarget(self, action: #selector(buttonStopUpdateLocationTapped), for: .touchUpInside)
-        view.addSubview(buttonLocation)
-        buttonLocation.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        buttonLocation.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     func addDetailView() {
